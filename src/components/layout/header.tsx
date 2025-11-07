@@ -3,6 +3,6 @@
 import Navbar from "./navbar";
 
 export default function Header() {
-  return <Navbar showAuth={true} />;
+  return <Navbar showAuth />;
 }
 
