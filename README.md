@@ -122,9 +122,4 @@ Source located at `src/lib/wdk.ts`, compatible with the official WDK API expecta
 - Balance refresh every 10 seconds when connected; silent handling of RPC errors during development
 
 ## Powered by
-- Avalanche Network
-- Tether (USDT)
 
-## Ecosystem Tags
-- ecosystem: avalanche
-- ecosystem: tether
