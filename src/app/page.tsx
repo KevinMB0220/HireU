@@ -1,8 +1,12 @@
+'use client'
+
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Briefcase, Shield, Zap } from "lucide-react";
+import CreateProjectPreview from "@/components/home/create-project-preview";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const features = [
@@ -28,13 +32,24 @@ export default function HomePage() {
     }
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#002333] via-[#003d4d] to-[#15949C] text-white py-20 lg:py-32">
+        <motion.section
+          className="relative overflow-hidden bg-gradient-to-br from-[#002333] via-[#004455] to-[#15949C] text-white py-20 lg:py-32"
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 right-20 w-96 h-96 bg-[#15949C] rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#002333] rounded-full blur-3xl"></div>
@@ -42,13 +57,25 @@ export default function HomePage() {
           
           <div className="container mx-auto px-4 max-w-7xl relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+                variants={fadeUp}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
                 Find the Perfect Talent for Your Next Project
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-8">
+              </motion.h1>
+              <motion.p
+                className="text-xl md:text-2xl text-white/90 mb-8"
+                variants={fadeUp}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 Connect with skilled professionals and get your work done efficiently
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+                variants={fadeUp}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 <Link href="/talent">
                   <Button size="lg" className="bg-white text-[#002333] hover:bg-white/90 text-lg h-12 px-8">
                     Find Talent
@@ -56,32 +83,51 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/post-project">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 text-lg h-12 px-8">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white/10 text-lg h-12 px-8">
                     Post a Project
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
+
+        {/* Project Creation Preview Section */}
+        <CreateProjectPreview />
 
         {/* Features Section */}
-        <section className="py-20 bg-gray-50">
+        <motion.section
+          className="py-20 bg-gray-50"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="text-center mb-16">
+            <motion.div
+              className="text-center mb-16"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-[#002333] mb-4">
                 Why Choose OFFER-HUB?
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Everything you need to hire talent and manage projects successfully
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
-                <div 
-                  key={index}
+                <motion.div
+                  key={feature.title}
                   className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+                  variants={fadeUp}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  whileInView="visible"
+                  initial="hidden"
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-[#15949C] to-[#002333] rounded-lg flex items-center justify-center mb-4">
                     <feature.icon className="h-6 w-6 text-white" />
@@ -92,14 +138,21 @@ export default function HomePage() {
                   <p className="text-gray-600">
                     {feature.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#15949C] to-[#002333] text-white">
+        <motion.section
+          className="py-20 bg-gradient-to-r from-[#15949C] to-[#002333] text-white"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto px-4 max-w-7xl text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Get Started?
@@ -116,7 +169,7 @@ export default function HomePage() {
               This is a UI demonstration only - no real accounts are created
             </p>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />
