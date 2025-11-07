@@ -368,10 +368,10 @@ flowchart TB
     
     subgraph Envio["WORK SUBMISSION"]
         direction TB
-        E1[📤 Freelancer calls<br/>WorkVerification.submitWork<br/>- verificationId<br/>- workHash: IPFS<br/>- evidenceHashes: IPFS[]]
+        E1[📤 Freelancer calls<br/>WorkVerification.submitWork<br/>- verificationId<br/>- workHash: IPFS<br/>- evidenceHashes: IPFS array]
         E2[🔍 Validations:<br/>- Verification PENDING<br/>- Freelancer is owner<br/>- workHash not empty]
         E3[📝 Update Verification:<br/>- workHash<br/>- submittedAt: timestamp<br/>- meetsDeadline: bool]
-        E4[📎 Save WorkEvidence:<br/>- evidenceHashes[]<br/>- timestamp<br/>- submitter]
+        E4[📎 Save WorkEvidence:<br/>- evidenceHashes array<br/>- timestamp<br/>- submitter]
         E5[✅ Work submitted]
         
         C4 --> E1
