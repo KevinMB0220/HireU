@@ -8,10 +8,12 @@ import { Card } from "@/components/ui/card"
 import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import { Search, MapPin, Star } from "lucide-react"
-import { talentData } from "@/lib/mock-data/talent-data"
+import { talentData, type Talent } from "@/lib/mock-data/talent-data"
+import TalentProfileModal from "@/components/talent/talent-profile-modal"
 
 export default function TalentPage() {
   const [searchTerm, setSearchTerm] = useState("")
+  const [selectedTalent, setSelectedTalent] = useState<Talent | null>(null)
 
   const filteredTalents = talentData.filter(
     (talent) =>
@@ -19,6 +21,12 @@ export default function TalentPage() {
       talent.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       talent.category.toLowerCase().includes(searchTerm.toLowerCase())
   )
+
+  const handleCloseModal = (open: boolean) => {
+    if (!open) {
+      setSelectedTalent(null)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -98,7 +106,7 @@ export default function TalentPage() {
                   <Button 
                     size="sm" 
                     className="bg-[#15949C] hover:bg-[#15949C]/90"
-                    onClick={() => alert("Profile view disabled in demo mode")}
+                    onClick={() => setSelectedTalent(talent)}
                   >
                     View Profile
                   </Button>
@@ -117,6 +125,12 @@ export default function TalentPage() {
       </main>
 
       <Footer />
+
+      <TalentProfileModal
+        open={Boolean(selectedTalent)}
+        talent={selectedTalent}
+        onOpenChange={handleCloseModal}
+      />
     </div>
   )
 }
