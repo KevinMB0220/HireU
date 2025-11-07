@@ -1,5 +1,10 @@
 # OFFER-HUB - Freelance Platform on Avalanche
 
+![Avalanche](https://img.shields.io/badge/Avalanche-E84142?style=for-the-badge&logo=avalanche&logoColor=white)
+![WDK](https://img.shields.io/badge/WDK-000000?style=for-the-badge&logo=ethereum&logoColor=white)
+
+> **Note:** This project was developed as part of the Dojo Coding Hackathon. This project was personally submitted to Paolo by Daniel Bejarano.
+
 Decentralized freelance platform built on Avalanche C-Chain with smart contracts and integrated wallets.
 
 ## Project Structure
